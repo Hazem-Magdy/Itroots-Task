@@ -1,0 +1,25 @@
+﻿
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn-primary {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+

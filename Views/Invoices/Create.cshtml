@@ -1,0 +1,66 @@
+﻿@model Itroots_Task.Models.Invoice
+
+<h2>Create Invoice</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Date"></label>
+        <input asp-for="Date" class="form-control" />
+    </div>
+
+    <div id="items-container">
+        <h3>Items</h3>
+        <table class="table" id="items-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input class="form-control" name="Items[0].Product" />
+                    </td>
+                    <td>
+                        <input class="form-control" name="Items[0].Quantity" />
+                    </td>
+                    <td>
+                        <input class="form-control" name="Items[0].Price" />
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" id="add-item">Add Row</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Invoice</button>
+</form>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var itemCount = 1;
+
+            $('#add-item').click(function () {
+                var row = '<tr>' +
+                    '<td><input class="form-control" name="Items[' + itemCount + '].Product" /></td>' +
+                    '<td><input class="form-control" name="Items[' + itemCount + '].Quantity" /></td>' +
+                    '<td><input class="form-control" name="Items[' + itemCount + '].Price" /></td>' +
+                    '<td><button type="button" class="btn btn-danger remove-item">Remove</button></td>' +
+                    '</tr>';
+
+                $('#items-table tbody').append(row);
+                itemCount++;
+            });
+
+            $('#items-table').on('click', '.remove-item', function () {
+                $(this).closest('tr').remove();
+            });
+        });
+    </script>
+}
